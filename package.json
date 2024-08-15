@@ -1,0 +1,19 @@
+{
+    "name": "riotjs-simple-state",
+    "version": "0.1.0",
+    "main": "./build/index.js",
+    "scripts": {
+        "tsc": "npx tsc",
+        "build": "npx tsc",
+        "lint": "npx eslint ./src/*.ts"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.9.0",
+        "@types/eslint__js": "^8.42.3",
+        "eslint": "^9.9.0",
+        "typescript-eslint": "^8.1.0",
+        "typescript": "^5.5.4"
+    },
+    "dependencies": {
+    }
+}
