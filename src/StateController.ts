@@ -18,16 +18,18 @@ export class StateController {
     /**
      * Create a new SharedObject with given unique name.
      *
+     * If a SharedObject by that name already exists then do nothing,
+     * default values are not set in such case.
+     *
+     * Events are triggered upon creation, also if object already existed.
+     *
      * @param name of the shared object
-     * @param sharedObject optional default values to set
-     * @throws if already existing
+     * @param sharedObject optional default values to set (if object does not already exist)
      */
     public async create(name: string, sharedObject: SharedObject = {}) {
-        if (this.repo[name]) {
-            throw new Error(`SharedObject ${name} already exists`);
+        if (!this.repo[name]) {
+            this.set(name, sharedObject);
         }
-
-        this.set(name, sharedObject);
 
         this.trigger(name);
     }
