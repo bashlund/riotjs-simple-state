@@ -121,6 +121,15 @@ export class StateController {
         this.trigger(name);
     }
 
+    /**
+     * Clear all state.
+     */
+    public reset() {
+        this.ref = {};
+        this.repo = {};
+        this.triggers = {};
+    }
+
     protected trigger(name: string) {
         const fns = this.triggers[name] ?? [];
 
