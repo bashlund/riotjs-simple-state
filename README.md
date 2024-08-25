@@ -8,6 +8,24 @@ A straight forward centralized state management system for RiotJS in ~150 lines 
 npm i riotjs-simple-state
 ```
 
+## Setup
+
+There are two ways of instantiating the `StateController`. Either use the global instance or instantiate it yourself and share that objects as you see fit.
+
+### 1. Use the global instance
+
+```js
+import {
+    stateController,  // note: lower-case "s", this is an instance.
+} from "riotjs-simple-state";
+```
+
+This is a ready to use StateController instance shared across your app.
+
+Note that this option does not rely on `riotjs` and can be used in plain JS/TS.
+
+### 2. Instantiate yourself
+
 In `main.js`:
 
 ```js
