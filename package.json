@@ -1,6 +1,22 @@
 {
     "name": "riotjs-simple-state",
-    "version": "0.4.0",
+    "version": "0.4.1",
+    "description": "Simple centralized state management for RiotJS",
+    "keywords": [
+        "state",
+        "management",
+        "riotjs",
+        "riot"
+    ],
+    "author": "Thomas Backlund",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bashlund/riotjs-simple-state.git"
+    },
+    "bugs": {
+        "url": "https://github.com/bashlund/riotjs-simple-state/issues"
+    },
     "main": "./build/index.js",
     "scripts": {
         "tsc": "npx tsc",
@@ -13,7 +29,5 @@
         "eslint": "^9.9.0",
         "typescript-eslint": "^8.1.0",
         "typescript": "^5.5.4"
-    },
-    "dependencies": {
     }
 }
