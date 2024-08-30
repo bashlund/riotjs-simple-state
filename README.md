@@ -2,6 +2,17 @@
 
 A straight forward centralized state management system for RiotJS in ~150 lines of TypeScript.
 
+There are two different types of shared objects:  
+
+1. Serializable shared objects used with `publish(), load(), watch(), delete()`.
+    These objects can traverse window/CPU boundaries if you make them and they follow
+    a publish/subscribe pattern.
+    This is the common case of working with shared objects.
+
+2. Any non necessarily serializable object set on the `.ref` object.
+    These objects are just as they are and can be used for singleton type of uses cases
+    such as shared database connection instances, etc.
+
 ## Installation
 
 ```sh
@@ -44,8 +55,15 @@ Now, every riotjs component will have the `stateController` object accessible  a
 
 One of your components must create the state, then any component can retrieve the state and update the state.
 
+Note that all objects must be serializable and cannot contain class instances of any kind.
+
 ```js
-onBeforeMount(props, state) {
+// It is generally advised to deal with state creation and loading/watching using onMounted,
+// and not onBeforeMount.
+// This is to avoid tricky situations where components who have not yet mounted are updated by riot
+// which leads to unexpected behaviour.
+//
+onMounted(props, state) {
     // Create state on before mount so it is existing prior to initing child components.
     //
     this.stateController.create("myState", {a: 1});
@@ -77,6 +95,8 @@ onUnmounted(props, state) {
 this.stateController.publish("myState", this.myState);
 
 // the `.ref` can be be used to share data without publishing it.
+// An object set on `.ref` can be any object or instance, it will never be
+// serialized like other shared objects will.
 // Features such as watch() cannot be used with `.ref`.
 //
 this.stateController.ref.databaseConnection.fetch(...);
