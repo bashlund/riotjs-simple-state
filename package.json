@@ -1,6 +1,6 @@
 {
     "name": "riotjs-simple-state",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "description": "Simple centralized state management for RiotJS",
     "keywords": [
         "state",
