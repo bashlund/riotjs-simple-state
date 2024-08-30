@@ -1,5 +1,5 @@
 //eslint-disable-next-line @typescript-eslint/no-explicit-any
-type SharedObject = Record<string, any>;
+type SharedObject = any;
 
 export class StateController {
     /**
